@@ -41,6 +41,8 @@ jobs:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USERNAME }}
         key: ${{ secrets.VPS_SSH_KEY }}
+        debug: true
+        timeout: 60s
         script: |
           # Navigate to project directory
           cd ~/projects/nodejs-docker-app
