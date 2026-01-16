@@ -34,7 +34,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+   
+    - name: Decode SSH Key
+      run: |
+        echo "${{ secrets.VPS_SSH_KEY }}" | base64 -d > /tmp/ssh_key
+        chmod 600 /tmp/ssh_key
+
     - name: Deploy to VPS
       uses: appleboy/ssh-action@v1.0.0
       with:
@@ -42,6 +47,7 @@ jobs:
         username: ${{ secrets.VPS_USERNAME }}
         key: ${{ secrets.VPS_SSH_KEY }}
         debug: true
+        key_path: /tmp/ssh_key
         timeout: 60s
         script: |
           # Navigate to project directory
