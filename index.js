@@ -28,6 +28,14 @@ function log(message) {
 	fs.appendFileSync(path.join(logsDir, 'app.log'), logMessage)
 }
 
+app.get('/cicd', (req, res) => {
+    res.json({
+        message: 'Deployed via GitHub Actions!',
+        timestamp: new Date(),
+        hostname: os.hostname()
+    });
+});
+
 app.get('/', (req, res) => {
     res.send(`
       <h1>Hello from Docker!</h1>
