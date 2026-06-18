@@ -1,5 +1,7 @@
 # Simple Example
 
+this is a v1.0
+
 **Threejs** is a framework js that allows you to build, create and style 3D shapes on a canvas
 
 To Start , install the deps
